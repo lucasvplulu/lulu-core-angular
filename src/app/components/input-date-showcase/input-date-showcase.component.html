@@ -1,0 +1,23 @@
+<form [formGroup]="formGroup" *ngIf="formGroup">
+    <div class="ui-fluid">
+        <div class="ui-g">
+            <div class="ui-g-2">
+                <label id="lb-date-one" for="ff-date-one">Data unmask - {{formGroup.get('dateOne').value}}</label>
+                <l-input-date-calendar id="ta-date-one" name="dateOne" [form]="formGroup" [unmask]="true">
+                </l-input-date-calendar>
+                <control-messages-error [control]="formGroup.get('dateOne')" [errorList]="{
+                    required: 'Campo obrigatório',
+                    invalidDate: 'Data inválida',
+                    isBefore: 'Data não pode ser anterior à data atual'
+                }">
+                </control-messages-error>
+            </div>
+
+            <div class="ui-g-2">
+                <label id="lb-date-two" for="ff-date-two">Data unmask - {{formGroup.get('dateTwo').value}}</label>
+                <l-input-date-calendar id="ta-date-two" name="dateTwo" [form]="formGroup" [unmask]="false">
+                </l-input-date-calendar>
+            </div>
+        </div>
+    </div>
+</form>

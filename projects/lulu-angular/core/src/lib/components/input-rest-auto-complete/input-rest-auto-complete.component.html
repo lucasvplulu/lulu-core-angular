@@ -1,0 +1,29 @@
+<div [formGroup]="form" >
+  <p-autoComplete [suggestions]="suggestions"
+                  (completeMethod)="filterQuery($event)"
+                  [placeholder]="placeholder"
+                  [minLength]="1"  [dropdown]="dropdown"
+                  field="name" size="50"
+                  [emptyMessage]="emptyMessage"
+                  [readonly]="readonly"
+                  [disabled]="disabled"
+                  [required]="required"
+                  [forceSelection]="forceSelection"
+                  (onSelect)="selectOption($event)"
+                  [formControlName]="name"
+                  (onClear)="onClearItem($event)"
+                  (onBlur)="onBlurItem($event)"
+                  (onDropdownClick)="onDropdownClick()"
+                  [inputId]="inputId"
+                  [autoHighlight]="true"
+                  [multiple]="multiple"
+                  #autoCompleteObject
+  >
+    <ng-template let-info pTemplate="item">
+      <div class="ui-helper-clearfix">
+        {{info.name}}
+      </div>
+    </ng-template>
+
+  </p-autoComplete>
+</div>

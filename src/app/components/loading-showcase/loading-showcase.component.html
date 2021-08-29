@@ -1,0 +1,8 @@
+<div class="ui-tree-container">
+    <br/>
+    <br/>
+    <br/>
+    <button (click)="change(0)" pButton class="ui-button-raised ui-button-rounded ui-button-success" type="button" label="Loading S/Mensagem" ></button>
+    <button (click)="change(1)" pButton class="ui-button-raised ui-button-rounded" type="button" label="Loading C/Mensagem" ></button>
+    <loading-state [loading]="loading" [withMessage]="msg"></loading-state>
+</div>

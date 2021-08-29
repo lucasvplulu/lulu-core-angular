@@ -1,0 +1,12 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<p-toast></p-toast>
+
+<div class="ui-tree-container">
+  <h1 class="ui-card-title">Lulu Components</h1>
+  <p-menu #menu [popup]="true" [model]="items"></p-menu>
+  <button type="button" pButton icon="pi pi-list" label=" Componentes " (click)="menu.toggle($event)"></button>
+</div>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

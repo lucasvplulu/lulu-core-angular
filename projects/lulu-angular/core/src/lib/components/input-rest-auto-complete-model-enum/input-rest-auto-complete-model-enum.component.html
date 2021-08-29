@@ -1,0 +1,26 @@
+<p-autoComplete
+                [suggestions]="suggestions"
+                (completeMethod)="filterQuery($event)"
+                [placeholder]="placeholder"
+                [minLength]="1" [dropdown]="dropdown"
+                field="value" size="50"
+                [emptyMessage]="emptyMessage | translate"
+                [readonly]="readonly"
+                [disabled]="disabled"
+                [required]="required"
+                [forceSelection]="forceSelection"
+                (onSelect)="selectOption($event)"
+                (onBlur)="onBlurItem($event)"
+                (onClear)="onClearItem($event)"
+                [(ngModel)]="model"
+                [autoHighlight]="true"
+                [style]="style"
+                [inputStyle]="inputStyle"
+                appendTo="body"
+>
+  <ng-template let-info pTemplate="item">
+    <div class="ui-helper-clearfix">
+      {{info.value | translate}}
+    </div>
+  </ng-template>
+</p-autoComplete>

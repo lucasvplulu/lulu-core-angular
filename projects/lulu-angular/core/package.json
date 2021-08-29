@@ -1,0 +1,9 @@
+{
+  "name": "lulu-core-angular",
+  "version": "{version}",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lucasvplulu/lulu-core-angular/"
+  },
+  "peerDependencies": {}
+}

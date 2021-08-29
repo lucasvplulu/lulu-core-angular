@@ -1,0 +1,29 @@
+@media (max-width: 767px) {
+  .error-code {
+    text-align: center;
+  }
+
+  .error-code > span {
+    color: #697882;
+    font-size: 80px;
+    font-weight: 300;
+  }
+}
+
+@media (min-width: 768px) {
+  .error-code > span {
+    color: #697882;
+    font-size: 128px;
+    font-weight: 300;
+    float: right;
+  }
+}
+
+.error-title {
+  padding-top: 30px;
+}
+
+.error-description {
+  color: #999999;
+  margin-top: 10px;
+}

@@ -1,0 +1,55 @@
+<div class="ui-fluid">
+  <div class="ui-g">
+    <div class="ui-md-6">
+      <label>Selecione um Banco</label>
+        <l-input-rest-auto-complete
+            [dropdown]="true" table="Bank"
+            [order]="['BankCode','BankNameI18n']"
+            [fields]="['BankCode','BankNameI18n']"
+            placeholder="Digite qualquer coisa"
+            emptyMessage="Nenhuma sugestão"
+            keyCode="BankCode"
+            keyName="BankNameI18n"
+            itemSelect="bank"
+            name="bank"
+            (onClear)="alert()"
+            [form]="financialGroup"
+            id="ta-bankName">
+        </l-input-rest-auto-complete>
+
+        Valor - {{financialGroup.get('bank').value | json}}
+    </div>
+  </div>
+  <div class="ui-g">
+    <div class="ui-md-2">
+      <label id="lb-reference-date" for="ta-reference-date">Data referência</label>
+      <l-input-date-calendar id="ta-reference-date" name="referenceDate" [form]="financialGroup" [unmask]="true">
+      </l-input-date-calendar>
+      Valor - {{financialGroup.get('referenceDate').value}}
+    </div>
+    <div class="ui-md-4">
+      <label>Selecione uma Causa de Desligamento</label>
+        <l-input-rest-auto-complete
+            [form]="financialGroup"
+            name="dismissalReason"
+            [isDismissalReason]="true"
+            [referenceDate]="referenceDateValue"
+            placeholder="Digite qualquer coisa"
+            emptyMessage="Nenhuma sugestão"
+            [dropdown]="true">
+        </l-input-rest-auto-complete>
+
+        Valor - {{financialGroup.get('dismissalReason').value | json}}
+    </div>
+    <div class="ui-md-4">
+        <label>Evento</label>
+        <l-input-rest-auto-complete [dropdown]="true" table="Wagetype" [order]="['WagetypeCode']"
+            [fields]="['WagetypeCode','WagetypeName','WagetypeTypeI18nEnum','WagetypeWageValueType']"
+            [conditionsFields]="['WagetypeCode','WagetypeName']"
+            [concatFieldsForName]="['WagetypeCode','WagetypeName','WagetypeTypeI18nEnum']"
+            placeholder="Digite qualquer coisa" name="wageType"
+            [form]="financialGroup" [companyId]="'79E7D7994661477DBA833AEF41498B44'" [isWagetype]="true">
+        </l-input-rest-auto-complete>
+    </div>
+  </div>
+</div>

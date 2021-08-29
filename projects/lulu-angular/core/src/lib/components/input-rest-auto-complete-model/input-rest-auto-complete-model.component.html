@@ -1,0 +1,26 @@
+<p-autoComplete [suggestions]="suggestions"
+                (completeMethod)="filterQuery($event)"
+                [placeholder]="placeholder"
+                [minLength]="1"  [dropdown]="dropdown"
+                field="name" size="50"
+                [emptyMessage]="emptyMessage"
+                [readonly]="readonly"
+                [disabled]="disabled"
+                [required]="required"
+                [forceSelection]="forceSelection"
+                (onSelect)="selectOption($event)"
+                (onClear)="onClearItem($event)"
+                (onBlur)="onBlurItem($event)"
+                (onFocus)="onFocusItem($event)"
+                [(ngModel)]="model"
+                [autoHighlight]="true"
+                [style]="style"
+                [inputStyle]="inputStyle"
+                appendTo="body"
+>
+  <ng-template let-info pTemplate="item">
+    <div class="ui-helper-clearfix">
+      {{info.name}}
+    </div>
+  </ng-template>
+</p-autoComplete>

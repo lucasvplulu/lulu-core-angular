@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~primeng/resources/primeng.min.css';
+@import '~primeng/resources/themes/nova-light/theme.css';
+@import '~primeicons/primeicons.css';
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Light', sans-serif;
+}
+
+
+.favorite * {
+    color: #fcbf10 !important;
+}
+
+.ui-toast {
+    top: 80px;
+}
+
+.ui-toast-break-line .ui-toast-detail {
+    white-space: pre-line !important;
+}
+

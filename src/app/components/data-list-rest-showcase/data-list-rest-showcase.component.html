@@ -1,0 +1,12 @@
+<div class="ui-g">
+    <div class="ui-g-12">
+        <p-panel header="Lista de colaboradores">
+            <l-data-list-rest id="ta-employee" [columns]="cols" actionLabel="Ações" emptyMessage="Não há registros"
+                endpoint="hcm/payroll/queries/employeeListQuery" singularMessageRecords="registro"
+                [actions]="scopedActions" pluralMessageRecords="registros" keyPayload="employees" [lazy]="true"
+                (lazyLoad)="onLazyLoad($event)" [(loading)]="loading" [orderBy]="orderBy" [parameters]="parameters"
+                [isSortable]="true">
+            </l-data-list-rest>
+        </p-panel>
+    </div>
+</div>

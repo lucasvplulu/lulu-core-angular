@@ -1,0 +1,59 @@
+  <p-table #dataListTable [id]="id" class="sds-list" [value]="listData" [columns]="columns" [paginator]="paginator" [rows]="rows"
+    [first]="first" (onLazyLoad)="onLazyLoad($event)" [lazy]="lazy" [alwaysShowPaginator]="alwaysShowPaginator"
+    (onPage)="pagination($event)" [totalRecords]="totalRecords" [(selection)]="selectedData" [dataKey]="dataKey"
+    [sortMode]="sortMode" [responsive]="true" pageLinks="3" (onHeaderCheckboxToggle)="onHeaderCheckboxToggle($event)"
+    [selectionMode]="selectionMode">
+    <!-- Header -->
+    <ng-template pTemplate="header">
+      <!-- Cabeçalhos quando da table é permitido ordenar as colunas -->
+      <tr>
+        <!-- Checkbox quando há seleção de linhas -->
+        <th id="{{id}}-checkbox-header" *ngIf="isMultipleSelection" style="width: 2.25em">
+          <p-tableHeaderCheckbox *ngIf="showHeaderCheckBox"></p-tableHeaderCheckbox>
+        </th>
+        <!-- Cabeçalhos das colunas da tabela -->
+        <th id="{{id}}-col-header-{{i}}" *ngFor="let col of columns; let i = index" [pSortableColumn]="col.orderBy || col.field"
+          [pSortableColumnDisabled]="!isSortable || !!col.icon" [style.width]="col.width" [pTooltip]="col.tooltip || col.label"
+          tooltipPosition="top" showDelay="500">
+          {{col['label']}}
+          <!-- Quando a coluna é um ícone não exibe o ícone de ordenação da mesma -->
+          <p-sortIcon *ngIf="isSortable && !col.icon" [field]="col.field"></p-sortIcon>
+        </th>
+        <!-- Cabeçalho da coluna de ações -->
+        <th id="{{id}}-col-actions" *ngIf="actions && actions()?.length" [ngClass]="{ actionsSize: actions().length > 1, actionSize: actions().length === 1 }"></th>
+      </tr>
+    </ng-template>
+    <!-- Body -->
+    <ng-template pTemplate="body" let-rowData let-key="rowIndex">
+      <tr [pSelectableRow]="rowData">
+        <td id="{{id}}-checkbox-body-{{key}}" *ngIf="isMultipleSelection">
+          <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+        </td>
+        <td id="{{id}}-col-body-{{i}}-{{key}}" *ngFor="let col of columns;let i = index" [pTooltip]="col.icon ? '' : getFieldValue(rowData, col)"
+          tooltipPosition="top" showDelay="500">
+          <!-- Exibe o ícone caso exista. Para isso o valor da coluna deve ser { value: string, style: object } -->
+          <i *ngIf="col.icon" class="{{rowData[col['field']]?.value}}" [ngStyle]="rowData[col['field']]?.style"
+            aria-hidden="true"></i>
+          <!-- Quando não há ícone exibe o valor normal da coluna -->
+          <span>{{getFieldValue(rowData, col)}}</span>
+        </td>
+
+        <!-- Coluna das ações -->
+        <td id="{{id}}-col-actions-{{key}}" class="col-actions" *ngIf="actions && actions(rowData)?.length">
+          <p-button id="{{id}}-btn-actions-{{key}}" *ngIf="actions(rowData).length > 1" [label]="actionLabel" [disabled]="false" ></p-button>
+
+          <p-button id="{{id}}-btn-action-{{key}}" *ngIf="actions(rowData).length <= 1" [label]="actions(rowData, key)[0].label" (click)="actions(rowData, key)[0].command()" [disabled]="false"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="paginatorright">
+      <span>{{recordsMessage}}</span>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage" let-columns>
+      <tr>
+        <td id="{{id}}-empty-message" [attr.colspan]="columns?.length + (isMultipleSelection ? 2 : 1)">{{emptyMessage}}</td>
+      </tr>
+    </ng-template>
+  </p-table>

@@ -1,0 +1,12 @@
+<div [formGroup]="form" >
+  <p-inputMask *ngIf="mask" [formControlName]="name"
+               [mask]="mask"
+               (onBlur)="onBlur($event)"
+               [placeholder]="placeholder"
+               [attr.disabled]="disabled"
+               [unmask]="unmask"
+               [inputId]="inputId"
+               [readonly]="readonly"
+               #inputDateElement
+  ></p-inputMask>
+</div>

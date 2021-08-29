@@ -1,0 +1,28 @@
+app-data-list p-table .ui-table .ui-table-tbody > tr > td,
+app-data-list p-table .ui-table .ui-table-thead > tr > th {
+  text-overflow: ellipsis;
+  white-space: nowrap !important;
+}
+
+app-data-list p-table .ui-paginator .ui-paginator-right-content {
+  margin-left: auto;
+}
+
+.actionsSize {
+    width: 11rem;
+}
+
+.actionSize {
+    width: 18rem;
+}
+
+body .ui-tooltip {
+  max-width: 22.3em !important;
+}
+
+// Remove o paginator em telas menores que 479px
+@media screen and (max-width: 478px) {
+  .ui-paginator-right-content {
+    display: none;
+  }
+}
